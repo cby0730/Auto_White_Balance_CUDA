@@ -1,0 +1,6 @@
+cpu_ver/main
+cpu_ver/main.o
+gpu_ver/con_Kries_cuda.o
+gpu_ver/main
+gpu_ver/main.o
+image
