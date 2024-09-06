@@ -97,3 +97,6 @@ The GPU implementation uses CUDA to parallelize the scaling operation, resulting
 1. Calculate the average value for each color channel.
 2. Compute scaling factors to equalize these averages.
 3. Apply the scaling factors to each pixel.
+
+### Other
+The picture in cpu_ver and gpu_ver is Photo by Optical Chemist from Pexels: https://www.pexels.com/photo/a-cat-sitting-on-top-of-some-rocks-15597164/.
