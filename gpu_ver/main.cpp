@@ -55,7 +55,7 @@ const cv::Matx33f RGB2XYZ(0.4124564,  0.3575761,  0.1804375,
                           0.0193339,  0.1191920,  0.9503041);
 
 // D65白點
-const float D65_y = 250.0f;
+const float D65_y = 1.0f;
 const float D65_x = 0.31271f;
 const float D65_z = 0.32902f;
 const cv::Vec3f D65(D65_y * D65_x / D65_z, D65_y, (1.0f - D65_x - D65_z) * D65_y / D65_z);
@@ -66,7 +66,7 @@ cv::Mat vonKries(const cv::Mat& input)
 
     // 將圖像轉換為浮點型
     cv::Mat floatImage;
-    input.convertTo(floatImage, CV_32FC3, 1.0 / 255.0);
+    input.convertTo(floatImage, CV_32FC3, 255.0);
 
     // 將RGB轉換為XYZ
     cv::Mat XYZ;
@@ -81,9 +81,9 @@ cv::Mat vonKries(const cv::Mat& input)
     int numPixels = static_cast<int>(totalPixels * 0.05);
     for (int i = 0; i < 3 ; ++i )
     {
-        std::vector<uchar> channalValues;
-        channalValues.assign(channals[i].begin<uchar>(), channals[i].end<uchar>());
-        std::nth_element(channalValues.begin(), channalValues.begin() + numPixels, channalValues.end(), std::greater<uchar>());
+        std::vector<float> channalValues;
+        channalValues.assign(channals[i].begin<float>(), channals[i].end<float>());
+        std::nth_element(channalValues.begin(), channalValues.begin() + numPixels, channalValues.end(), std::greater<float>());
         //std::sort(channalValues.begin(), channalValues.end(), std::greater<uchar>());
 
         // int numPixels = static_cast<int>(channalValues.size() * 0.05);
